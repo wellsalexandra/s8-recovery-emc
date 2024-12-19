@@ -125,7 +125,7 @@ prior.add_parameter('alpha_s', dist=(0.8, 1.2))
 prior.add_parameter('log_eta', dist=(-0.477, 0.477))
 
 ### ADDED PARAMETER FOR RSDs ONLY
-prior.add_parameter('alpha_c', dist=(0.0, 0.4))
+# prior.add_parameter('alpha_c', dist=(0.0, 0.4))
 
 # Additional parameters
 prior.add_parameter('f_compl', dist=(0.5, 1.0))
