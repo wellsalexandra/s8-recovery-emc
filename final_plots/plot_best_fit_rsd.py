@@ -78,9 +78,6 @@ mpl.rcParams['legend.framealpha'] = 0.1
 mpl.rcParams['xtick.minor.visible'] = True
 mpl.rcParams['ytick.minor.visible'] = True
 
-folderpath_wp_ds = './fit_results/new_mock_wp_ds_Abacus/'
-folderpath_rsd = './fit_results/new_mock_rsd_Abacus/'
-
 table_rsd = Table.read('sampler_post_rsd.csv')
 log_l = table_rsd['log_l']
 log_w = table_rsd['log_w']
