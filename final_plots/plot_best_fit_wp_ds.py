@@ -56,6 +56,27 @@ import h5py
 import corner
 import os
 
+import matplotlib as mpl
+mpl.rcParams['font.family'] = 'serif'
+mpl.rcParams['font.size'] = 10
+# mpl.rcParams['text.usetex'] = True
+mpl.rcParams['figure.figsize'] = 3.33, 2.5
+mpl.rcParams['figure.dpi'] = 300
+mpl.rcParams['savefig.dpi'] = 300
+# mpl.rcParams['backend'] = 'GTK3Agg'
+print(mpl.rcParams['backend'].__init__)
+mpl.rcParams['legend.fontsize'] = 'medium'
+mpl.rcParams['xtick.direction'] = 'in'
+mpl.rcParams['xtick.top'] = True
+mpl.rcParams['xtick.bottom'] = True
+mpl.rcParams['ytick.direction'] = 'in'
+mpl.rcParams['ytick.left'] = True
+mpl.rcParams['ytick.right'] = True
+mpl.rcParams['legend.fancybox'] = False
+mpl.rcParams['legend.framealpha'] = 0.1
+# mpl.rcParams['legend.edgecolor'] = 0.0
+mpl.rcParams['xtick.minor.visible'] = True
+mpl.rcParams['ytick.minor.visible'] = True
 
 folderpath_wp_ds = './fit_results/new_mock_wp_ds_Abacus/'
 folderpath_rsd = './fit_results/new_mock_rsd_Abacus/'
