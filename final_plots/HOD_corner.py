@@ -1,6 +1,6 @@
 # attempt at random corner plot:
+from astropy.table import Table
 import matplotlib.pyplot as plt
-from scipy.spatial import ConvexHull
 import corner
 import matplotlib as mpl
 
