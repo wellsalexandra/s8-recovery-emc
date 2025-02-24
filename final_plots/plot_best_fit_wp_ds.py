@@ -1,4 +1,5 @@
 !pip install git+https://github.com/johannesulf/TabCorr.git --ignore-installed --no-deps
+import tabcorr
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -78,49 +79,6 @@ mpl.rcParams['legend.framealpha'] = 0.1
 mpl.rcParams['xtick.minor.visible'] = True
 mpl.rcParams['ytick.minor.visible'] = True
 
-folderpath_wp_ds = './fit_results/new_mock_wp_ds_Abacus/'
-folderpath_rsd = './fit_results/new_mock_rsd_Abacus/'
-
-import tabcorr
-max_likelihoods_wp_ds = []
-evidences_wp_ds = []
-max_likelihoods_rsd = []
-evidences_rsd = []
-
-box = [0, 1, 4, 13, 100, 101, 102, 103, 104, 105, 112, 113, 116, 117, 
-       118, 119, 120, 125, 126, 130, 131, 132, 133, 134, 135, 136, 
-       137, 138, 139, 140, 141, 142, 143, 144, 145, 146]
-
-for i in box:
-    f = open(folderpath_wp_ds+"output"+str(i)+".txt", "r")
-    line1 = f.readline()
-    line2 = f.readline()
-    
-    max_likelihood = float(line1[15:])
-    evidence = float(line2[9:])
-    
-    max_likelihoods_wp_ds.append(max_likelihood)
-    evidences_wp_ds.append(evidence)
-
-    f = open(folderpath_rsd+"output"+str(i)+".txt", "r")
-    line1 = f.readline()
-    line2 = f.readline()
-    
-    max_likelihood = float(line1[15:])
-    evidence = float(line2[9:])
-    
-    max_likelihoods_rsd.append(max_likelihood)
-    evidences_rsd.append(evidence)
-    
-# wp+ds
-best_wp_ds_index = np.argmax(max_likelihoods_wp_ds)
-print(box[best_wp_ds_index])
-print(np.max(max_likelihoods_wp_ds))
-
-# rsd
-best_rsd_index = np.argmax(max_likelihoods_rsd)
-print(box[best_rsd_index])
-print(np.max(max_likelihoods_rsd))
 
 # Load in points array from sampler from the fits of these two boxes
 table_wp_ds = Table.read('sampler_post_wp_ds.csv')
@@ -136,9 +94,6 @@ points = [table_wp_ds['logM1'], table_wp_ds['logM0'], table_wp_ds['alpha'], tabl
 points = np.asarray(points).T
 best_fit_index = np.argmax(log_l)
 best_fit_params = points[best_fit_index]
-
-# create final model with best fit params specified
-# model
 
 box_index = 112 # wp+ds best fit cosmology
 # box_index = 103 # RSD best fit cosmology
