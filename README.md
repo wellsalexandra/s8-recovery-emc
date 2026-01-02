@@ -1,6 +1,6 @@
-# This repository details an analysis pipeline used for extracting cosmological parameters from mock datasets of projected galaxy clustering, redshift-space clustering, and galaxy-galaxy lensing.
+## This repository details an analysis pipeline used for extracting cosmological parameters from mock datasets of projected galaxy clustering, redshift-space clustering, and galaxy-galaxy lensing.
 
-# Guide for using provided scripts: (*Mock data sets already obtained*)
+## Guide for using provided scripts: (*Mock data sets already obtained*)
 
 **Step 1:** Run fitting script to compute likelihood values for each cosmology. See **likelihood_over_cosmologies** folder. Use **submit_job_ab_loop.sh** to run fitting script (**run_fit_ab.py**) over all applicable cosmologies for analysis (provided code uses LCDM cosmologies from AbacusSummit simulations). This will output max (log)likelihood values for each cosmology. 
 
