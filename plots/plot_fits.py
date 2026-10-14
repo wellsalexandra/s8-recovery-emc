@@ -69,6 +69,9 @@ for assembly_bias_mock, assembly_bias_model in zip(
         ax.set_xlabel(r"$r_\mathrm{p} \, [h^{-1} \, \mathrm{Mpc}]$")
     axs[1, 2].set_xlabel(r"$s \, [h^{-1} \, \mathrm{Mpc}]$")
 
+    # limit y-range in case the model prediction on small scales is high
+    axs[0, 0].set_ylim(ymax=240)
+
     for (ax1, ax2), tpcf_min in zip(
             [axs[:, 0], axs[:, 1], axs[:, 2]],
             [jerboa.WP_MIN, jerboa.DS_MIN, jerboa.XI_MIN]):
