@@ -12,7 +12,8 @@ for assembly_bias_mock, assembly_bias_model in zip(
         [True, False, True], [True, True, False]):
 
     fig, axs = plt.subplots(
-        figsize=(7, 2), ncols=3, nrows=2, height_ratios=[3.5, 1.0], sharex='col')
+        figsize=(7, 2), ncols=3, nrows=2, height_ratios=[3.5, 1.0],
+        sharex='col')
 
     config = database.configuration('efficient')
     obs = jerboa.observations('ggl', assembly_bias_mock)
@@ -20,7 +21,7 @@ for assembly_bias_mock, assembly_bias_model in zip(
 
     for tpcf, color, (ax1, ax2), bins, exp, offset, label in zip(
             ['wp', 'ds', 'xi0', 'xi2', 'xi4'],
-            ['royalblue', 'tomato', 'teal', 'darkviolet', 'orange'],
+            ['royalblue', 'tomato', 'seagreen', 'darkviolet', 'orange'],
             [axs[:, 0], axs[:, 1], axs[:, 2], axs[:, 2], axs[:, 2]],
             ['rp_wp_bins', 'rp_ds_bins', 's_bins', 's_bins', 's_bins'],
             [1, 1, 1.5, 1.5, 1.5],
@@ -58,7 +59,7 @@ for assembly_bias_mock, assembly_bias_model in zip(
         ax.set_ylabel(r'$\delta$')
 
     axs[0, 2].legend(loc='lower left', frameon=False, ncols=3,
-                     handletextpad=-0.5, columnspacing=-0.5)
+                     handletextpad=-0.5, columnspacing=-0.5, borderaxespad=0)
 
     axs[0, 0].set_ylabel(r"$r_\mathrm{p} w_\mathrm{p} \, [h^{-2} \, "
                          r"\mathrm{Mpc}^2]$")
