@@ -10,11 +10,11 @@ import jerboa
 parser = argparse.ArgumentParser(
     description='Fit a single AbacusSummit simulation to one data set.')
 parser.add_argument('observations', help='observations to fit')
-parser.add_argument('assembly_bias_mock', help='mock with assembly bias',
-                    type=bool)
-parser.add_argument('assembly_bias_model', help='model with assembly bias',
-                    type=bool)
 parser.add_argument('cosmology', help='AbacusSummit cosmology', type=int)
+parser.add_argument('--assembly_bias_mock', help='mock with assembly bias',
+                    action='store_true')
+parser.add_argument('--assembly_bias_model', help='model with assembly bias',
+                    action='store_true')
 parser.add_argument('--n_jobs', help='how many processes to use', default=1,
                     type=int)
 parser.add_argument('--verbose', action='store_true')
