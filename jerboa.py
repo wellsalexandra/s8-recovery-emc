@@ -83,8 +83,15 @@ def observations(observations, assembly_bias):
 
     use = np.concatenate([
         obs[f'{key}_use'] for key in ['wp', 'ds', 'xi0', 'xi2', 'xi4']])
-    obs['cov'] = np.genfromtxt(
-        MOCK_PATH / f'cov_model1{suffix}.txt')[use, :][:, use]
+
+    cov = np.genfromtxt(MOCK_PATH / f'cov_model1{suffix}.txt')
+
+    i = 0
+    for key, n in zip(['wp', 'ds', 'xi0', 'xi2', 'xi4'], [14, 13, 14, 14, 14]):
+        obs[f'{key}_err'] = np.sqrt(np.diag(cov[i:i + n][:, i:i + n]))
+        i += n
+
+    obs['cov'] = cov[use, :][:, use]
     obs['pre'] = (125 - len(obs['cov']) - 2) / (125 - 1) * np.linalg.inv(
         obs['cov'])
 
