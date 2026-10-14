@@ -64,7 +64,7 @@ for assembly_bias_mock, assembly_bias_model in zip(
                          r"\mathrm{Mpc}^2]$")
     axs[0, 1].set_ylabel(r"$r_\mathrm{p} \Delta\Sigma \, [10^6 \, M_\odot "
                          r"/ \mathrm{pc}]$")
-    axs[0, 2].set_ylabel(r"$s^{1.5} \xi \, [h^{-1.5}\mathrm{Mpc}^2]$")
+    axs[0, 2].set_ylabel(r"$s^{1.5} \xi \, [h^{-1.5}\mathrm{Mpc}^{1.5}]$")
     for ax in [axs[1, 0], axs[1, 1]]:
         ax.set_xlabel(r"$r_\mathrm{p} \, [h^{-1} \, \mathrm{Mpc}]$")
     axs[1, 2].set_xlabel(r"$s \, [h^{-1} \, \mathrm{Mpc}]$")
