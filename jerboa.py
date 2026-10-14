@@ -122,3 +122,25 @@ def halotab(observations, cosmology):
     return {key: database.read(
         'AbacusSummit', 0.5, key, tab_config='efficient', i_cosmo=cosmology)
         for key in keys}
+
+
+def statistics(observations, assembly_bias_mock, assembly_bias_model):
+    rows = []
+    for cosmology in [0, 1, 4, 13, 100, 101, 102, 103, 104, 105, 112, 113, 116,
+                      117, 118, 119, 120, 125, 126, 130, 131, 132, 133, 134,
+                      135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145,
+                      146]:
+        cosmo = database.cosmology('AbacusSummit', cosmology)
+        path = (FITS_PATH /
+                (f"{observations}{'_mock_gab' if assembly_bias_mock else ''}"
+                 f"{'_model_gab' if assembly_bias_model else ''}") /
+                f"{cosmology}.hdf5")
+        meta = dict(Table.read(path).meta)
+        rows.append(meta | dict(
+            O_m=cosmo.Om0, sigma_8=cosmo.sigma8, n_s=cosmo.ns,
+            H_0=cosmo.H0, O_b=cosmo.Ob0, N_eff=cosmo.Neff,
+            sum_m_nu=np.sum(cosmo.m_nu), w_0=cosmo.w0, w_a=cosmo.wa,
+            cosmology=cosmology))
+    table = Table(rows)
+    table['S_8'] = table['sigma_8'] * np.sqrt(table['O_m'] / 0.3)
+    return table
